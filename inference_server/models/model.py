@@ -168,7 +168,7 @@ def get_hf_model_class(model_class: str) -> Union[AutoModelForCausalLM, AutoMode
 
 
 def load_tokenizer(model_name: str) -> AutoTokenizer:
-    tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side="left")
+    tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side="left", use_fast=False)
 
     if tokenizer.pad_token_id is None:
         tokenizer.add_special_tokens({"pad_token": "[PAD]"})
